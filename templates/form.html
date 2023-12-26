@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diamond Prediction</title>
+    <style> 
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20200610/pngtree-scattered-luxury-diamonds-dark-blue-background-image_338550.jpg'); /* updated background image */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255 ,255 ,255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+        .form-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            max-width: 350px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        select {
+            appearance: none;
+            background: transparent;
+            padding-right: 25px;
+            background-image: url('down-arrow.png');
+            background-position: right center;
+            background-repeat: no-repeat;
+        }
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <div class="form-header">
+            <h1>Diamond Prediction</h1>
+            <p>Project by K.Trimal Rao</p>
+        </div>
+        <form action="{{ url_for('predict_datapoint') }}" method="POST">
+            <div class="form-group">
+                <label for="carat">Carat:</label>
+                <input type="text" id="carat" name="carat" placeholder="Range (0.2 - 1.3)">
+            </div>
+            
+            <div class="form-group">
+                <label for="depth">Depth:</label>
+                <input type="text" id="depth" name="depth" placeholder="Enter depth value in mm(float)">
+            </div>
+            
+            <div class="form-group">
+                <label for="table">Table:</label>
+                <input type="text" id="table" name="table" placeholder="Range (49 to 79)">
+            </div>
+            
+            <div class="form-group">
+                <label for="x">x:</label>
+                <input type="text" id="x" name="x" placeholder="Enter x value in mm(float)">
+            </div>
+            
+            <div class="form-group">
+                <label for="y">y:</label>
+                <input type="text" id="y" name="y" placeholder="Enter y value in mm(float)">
+            </div>
+            
+            <div class="form-group">
+                <label for="z">z:</label>
+                <input type="text" id="z" name="z" placeholder="Enter z value in mm(float)">
+            </div>
+            
+            <div class="form-group">
+                <label for="cut">Cut:</label>
+                <select id="cut" name="cut">
+                    <option value="Fair">Fair</option>
+                    <option value="Good">Good</option>
+                    <option value="Very Good">Very Good</option>
+                    <option value="Premium">Premium</option>
+                    <option value="Ideal">Ideal</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="color">Color:</label>
+                <select id="color" name="color">
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                    <option value="G">G</option>
+                    <option value="H">H</option>
+                    <option value="I">I</option>
+                    <option value="J">J</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="clarity">Clarity:</label>
+                <select id="clarity" name="clarity">
+                    <option value="I1">I1</option>
+                    <option value="SI2">SI2</option>
+                    <option value="SI1">SI1</option>
+                    <option value="VS2">VS2</option>
+                    <option value="VS1">VS1</option>
+                    <option value="VVS2">VVS2</option>
+                    <option value="VVS1">VVS1</option>
+                    <option value="IF">IF</option>
+                </select>
+            </div>
+            
+            <div style="clear:both;"></div>
+            <input type="submit" value="Predict">
+        </form>
+        <div class="result">
+            {% if final_result %}
+                Predicted Price: {{ final_result }}
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
