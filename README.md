@@ -1,8 +1,10 @@
 # Diamond Price Prediction
 
+![image alt](https://github.com/Ktrimalrao/Diamond_Price_Prediction/blob/2cedaf310c1d377e7d118762a9e6e2c8c84ddc5d/Diamond_Price_Prediction_Thumnail.png)
 The **Diamond Price Prediction** project uses advanced machine learning techniques to predict the price of diamonds based on their physical and quality attributes. This application provides real-time predictions through a Flask web application, making it a valuable tool for buyers, sellers, and industry professionals.
 
 ---
+![image alt](https://github.com/Ktrimalrao/Diamond_Price_Prediction/blob/2cedaf310c1d377e7d118762a9e6e2c8c84ddc5d/Screenshot%202024-12-25%20220225.png)
 
 ## Table of Contents
 - [Usage](#usage)
